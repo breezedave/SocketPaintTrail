@@ -51,7 +51,7 @@ class World {
 
     assignColor = () => {
         this.playerColorI += 1;
-        return playerColors[this.playerColorI];
+        return playerColors[this.playerColorI % playerColors.length];
     }
 
     randomPos() {

@@ -25,7 +25,7 @@ class Board {
         this.canvas.height = h * blockSize;
 
         for(let i = 0; i < this.world.world.length; i += 1) {
-            this.ctx.fillStyle = blocks[this.world.world[i]];
+            this.ctx.fillStyle = blocks[this.world.world[i] % blocks.length];
             this.ctx.fillRect((i % w) * blockSize, parseInt(i / w) * blockSize, blockSize, blockSize);
         }
     }
