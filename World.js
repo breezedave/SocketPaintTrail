@@ -26,19 +26,19 @@ class World {
                 switch(keyCode) {
                     case 38:
                     case 87:
-                        Math.max(0, this.pos.y -= 5);
+                        this.pos.y = Math.max(0, this.pos.y - 5);
                         break;
                     case 40:
                     case 83:
-                        Math.min(this.world.size - 1, this.pos.y += 5);
+                        this.pos.y = Math.min(this.world.size * this.world.blockSize - 1, this.pos.y + 5);
                         break;
                     case 37:
                     case 65:
-                        Math.max(0, this.pos.x -= 5);
+                        this.pos.x = Math.max(0, this.pos.x - 5);
                         break;
                     case 39:
                     case 68:
-                        Math.min(this.world.size - 1, this.pos.x += 5);
+                        this.pos.x = Math.min(this.world.size * this.world.blockSize - 1, this.pos.x + 5);
                         break;
                 }
                 io.sockets.emit("updatePlayers", this.world.getPlayers());
