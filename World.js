@@ -26,19 +26,19 @@ class World {
                 switch(keyCode) {
                     case 38:
                     case 87:
-                        this.pos.y -= 5;
+                        Math.max(0, this.pos.y -= 5);
                         break;
                     case 40:
                     case 83:
-                        this.pos.y += 5;
+                        Math.min(this.world.size - 1, this.pos.y += 5);
                         break;
                     case 37:
                     case 65:
-                        this.pos.x -= 5;
+                        Math.max(0, this.pos.x -= 5);
                         break;
                     case 39:
                     case 68:
-                        this.pos.x += 5;
+                        Math.min(this.world.size - 1, this.pos.x += 5);
                         break;
                 }
                 io.sockets.emit("updatePlayers", this.world.getPlayers());
@@ -88,6 +88,10 @@ class World {
 
     setVal(data) {
         const {x, y, v} = data;
+
+        if(x >= this.size || x < 0) return;
+        if(y >= this.size || y < 0) return;
+
         const pos = y * this.size + x;
 
         this.data.splice(pos, 1, v);

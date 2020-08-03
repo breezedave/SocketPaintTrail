@@ -23,7 +23,6 @@ class Server {
             socket.on("getWorld", () => {
                 socket.emit("world", this.world.getWorld());
             });
-            socket.on("temp", (data) => this.world.setVal(data));
             socket.on("keydown", (val) => {
                 if(socket.player[`interval${val}`]) return;
                 socket.player[`interval${val}`] = setInterval(() => socket.player.updatePos(val), 150);

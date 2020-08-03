@@ -64,10 +64,6 @@ class Client {
         this.playersData = data;
         this.players.updatePlayers(data);
     }
-
-    temp = (data) => {
-        this.socket.emit("temp", data)
-    }
 }
 
 export default Client;
